@@ -20,15 +20,19 @@ class ViewController: UIViewController {
     }
     @IBAction func showMessage() {
         let caneclAlert = UIAlertController(
-            title: "",
+            title: "哎唷",
             message: "加油！開心點🤡",
+            preferredStyle: .actionSheet)
+        let okAlert = UIAlertController(
+            title: "嘻嘻",
+            message: "明天繼續保持唷💪🏻",
             preferredStyle: .actionSheet)
         func test(){
             print("取消完成拉")
         }
         let alertController = UIAlertController(
             title: "Hi🙋🏻‍♀️",
-            message: "你今天過的好嗎?",
+            message: "今天過的好嗎?",
             preferredStyle: .alert)
         
         // 建立[取消]按鈕
@@ -39,8 +43,6 @@ class ViewController: UIViewController {
                     caneclAlert,
                     animated: true,
                     completion: nil)
-            
-                print("取消完成拉")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                 }
@@ -50,8 +52,15 @@ class ViewController: UIViewController {
         // 建立[送出]按鈕
         let okAction = UIAlertAction(
             title: "好",
-            style: .default,
-            handler: nil)
+            style: .default) { (name) in
+                self.present(
+                    okAlert,
+                    animated: true,
+                    completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
+        }
         alertController.addAction(okAction)
 
         self.present(
